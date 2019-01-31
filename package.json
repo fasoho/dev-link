@@ -1,0 +1,9 @@
+{
+  "name": "dev-link",
+  "version": "1.0.0",
+  "description": "A site to connect other developers for networking and work-related events",
+  "main": "server.js",
+  "repository": "https://github.com/fasoho/dev-link.git",
+  "author": "JP <1.4.gigz@gmail.com>",
+  "license": "MIT"
+}
