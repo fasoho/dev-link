@@ -1,16 +1,19 @@
-const express = require('express');
-const mongoose = require('mongoose');
+const express = require("express");
+const mongoose = require("mongoose");
 const app = express();
 
 // DB Config
-const db = require('./config/keys').mongoURI;
+const db = require("./config/keys").mongoURI;
 
 mongoose
-  .connect(db, { useNewUrlParser: true})
-  .then(() => console.log('MongoDB connected'))
+  .connect(
+    db,
+    { useNewUrlParser: true }
+  )
+  .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
 
-app.get('/', (req, res) => res.send('Hello'));
+app.get("/", (req, res) => res.send("Hello"));
 
 const port = process.env.PORT || 5000;
 
