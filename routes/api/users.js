@@ -15,6 +15,7 @@ const User = require("../../models/User");
 // @access  Public
 router.get("/test", (req, res) => res.json({ msg: "User works" }));
 
+
 // @route   POST api/users/register
 // @desc    Register User
 // @access  Public
@@ -101,7 +102,12 @@ router.get(
   "/current",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    res.json(req.user);
+    res.json({
+      id: req.user.id,
+      first_name: req.user.first_name,
+      last_name: req.user.last_name,
+      email: req.user.email
+    });
   }
 );
 
