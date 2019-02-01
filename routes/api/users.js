@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
+// Bring in keys
+const keys = require("../../config/keys");
 
 // Load User model
 const User = require("../../models/User");
@@ -46,7 +50,6 @@ router.post("/register", (req, res) => {
     }
   });
 });
-<<<<<<< HEAD
 
 // @route   POST api/users/login
 // @desc    Login user
@@ -64,14 +67,29 @@ router.post("/login", (req, res) => {
     // Check password
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
-        res.json({ msg: "Success" });
+        const payload = {
+          id: user.id,
+          first_name: user.first_name,
+          last_name: user.last_name,
+          avatar: user.avatar
+        };
+
+        jwt.sign(
+          payload,
+          keys.secretOrKey,
+          { expiresIn: 3600 },
+          (err, token) => {
+            res.json({
+              success: true,
+              token: "Bearer " + token
+            });
+          }
+        );
       } else {
         return res.status(404).json({ password: "Password incorrect" });
       }
     });
   });
 });
-=======
->>>>>>> 3bc57fe1148ad9b632ac0218f0e24352951ce329
 
 module.exports = router;
