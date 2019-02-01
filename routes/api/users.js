@@ -46,6 +46,7 @@ router.post("/register", (req, res) => {
     }
   });
 });
+<<<<<<< HEAD
 
 // @route   POST api/users/login
 // @desc    Login user
@@ -70,5 +71,7 @@ router.post("/login", (req, res) => {
     });
   });
 });
+=======
+>>>>>>> 3bc57fe1148ad9b632ac0218f0e24352951ce329
 
 module.exports = router;
